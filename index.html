@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        #playButton {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        #playButton:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        #playButton:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <button id="playButton">Play Message</button>
+    <audio id="audio" autoplay>
+        <source src="https://drive.google.com/uc?export=download&id=1dYzg0GrlVcxvvNiwcthCCy1tIUq8hyNy" type="audio/mp4">
+    </audio>
+    <script>
+        const audio = document.getElementById('audio');
+        const button = document.getElementById('playButton');
+        
+        // Try to autoplay
+        audio.play().catch(() => {
+            // If autoplay fails, show the button
+            button.style.display = 'block';
+        });
+
+        // Button click handler
+        button.onclick = () => {
+            audio.play();
+            button.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
